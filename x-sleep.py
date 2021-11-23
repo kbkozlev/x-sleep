@@ -1,3 +1,4 @@
+# created by kbkozlev 23.11.2021
 import random
 import time
 from pynput.keyboard import Key, Controller as KeyController
