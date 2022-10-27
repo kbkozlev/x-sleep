@@ -8,9 +8,10 @@ mouse = MouseController()
 key = KeyController()
 
 
-def caps_toggle():
-    key.press(Key.caps_lock)
-    key.release(Key.caps_lock)
+def toggle(button):
+    key.press(button)
+    time.sleep(0.1)
+    key.release(button)
 
 
 mouse.position = (0, 0)
@@ -19,7 +20,6 @@ print('The pointer starting position is {0}'.format(
     mouse.position))
 
 while True:
-    wait = random.randint(1, 5)
     a = random.randint(1, 10)
     b = 1
 
@@ -29,7 +29,8 @@ while True:
         print('The pointer was moved to {0}'.format(mouse.position))
         b += 1
 
-    caps_toggle()
+    wait = random.randint(1, 5)
+    toggle(Key.caps_lock)
     time.sleep(wait)
     print('Caps Lock was pressed for {0}s.'.format(wait))
-    caps_toggle()
+    toggle(Key.caps_lock)
