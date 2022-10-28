@@ -10,7 +10,6 @@ key = KeyController()
 
 def toggle(button):
     key.press(button)
-    time.sleep(0.1)
     key.release(button)
 
 
