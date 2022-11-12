@@ -8,16 +8,21 @@ mouse = MouseController()
 key = KeyController()
 
 
-def toggle(button):
+def toggle(button, state, name, wait=None):
+
     key.press(button)
-    time.sleep(0.1)
     key.release(button)
+
+    if state == 1:
+        print('{0} ON'.format(name))
+
+    elif state == 0:
+        print('{0} OFF, button was pressed for {1}s.'.format(name, wait))
 
 
 mouse.position = (0, 0)
 
-print('The pointer starting position is {0}'.format(
-    mouse.position))
+print('The pointer starting position is {0}'.format(mouse.position))
 
 while True:
     a = random.randint(1, 10)
@@ -30,7 +35,6 @@ while True:
         b += 1
 
     wait = random.randint(1, 5)
-    toggle(Key.caps_lock)
+    toggle(Key.caps_lock, 1, 'Caps Lock')
     time.sleep(wait)
-    print('Caps Lock was pressed for {0}s.'.format(wait))
-    toggle(Key.caps_lock)
+    toggle(Key.caps_lock, 0, 'Caps Lock', wait)
